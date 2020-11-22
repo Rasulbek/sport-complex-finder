@@ -1,0 +1,73 @@
+entity Profile(profile) {
+	phone String maxlength(15)
+	userName String maxlength(100)
+    fullName String
+    chosenLang String maxlength(2)
+    status ProfileStatus required
+}
+
+enum ProfileStatus {
+	ACTIVE, BANNED, BLOCKED
+}
+
+entity Category(category) {
+	name String required
+    status FacilityStatus required
+}
+
+enum FacilityStatus {
+	ENABLED, DISABLED, HIDDEN, VIP
+}
+
+entity SportsHall(hall) {
+	name String required
+    description String maxlength(400)
+    contactPerson String required
+    phone String
+    telegramNick String
+    price Integer required
+    status FacilityStatus required
+    latitude Double
+    longitude Double
+    address String
+    landmark String
+    ownerTelegramId String
+}
+
+entity ImageStorage(image_storage) {
+	image ImageBlob required
+    sportsHallId Long
+    isPrimary Boolean
+}
+
+entity Region(region) {
+    name String required maxlength(100)
+}
+
+entity City(city) {
+    name String required maxlength(100)
+}
+
+entity Administrator(administrator) {
+	chatId String required
+    role AdminRole
+}
+
+enum AdminRole {
+	ADMIN, MODERATOR
+}
+
+relationship ManyToOne {
+	SportsHall{category(name) required} to Category
+    SportsHall{city(name) required} to City
+	Profile{city(name) required} to City
+	City{region(name) required} to Region
+}
+
+dto * with mapstruct
+
+service * with serviceClass
+
+paginate * with pagination
+
+filter Profile, City, SportsHall, ImageStorage

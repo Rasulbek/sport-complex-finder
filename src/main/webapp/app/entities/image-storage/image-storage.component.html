@@ -1,0 +1,80 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="sportComplexFinderApp.imageStorage.home.title">Image Storages</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-image-storage" [routerLink]="['/image-storage/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="sportComplexFinderApp.imageStorage.home.createLabel">
+            Create a new Image Storage
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="imageStorages?.length === 0">
+        <span jhiTranslate="sportComplexFinderApp.imageStorage.home.notFound">No imageStorages found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="imageStorages && imageStorages.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="image"><span jhiTranslate="sportComplexFinderApp.imageStorage.image">Image</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="sportsHallId"><span jhiTranslate="sportComplexFinderApp.imageStorage.sportsHallId">Sports Hall Id</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="isPrimary"><span jhiTranslate="sportComplexFinderApp.imageStorage.isPrimary">Is Primary</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let imageStorage of imageStorages ;trackBy: trackId">
+                    <td><a [routerLink]="['/image-storage', imageStorage.id, 'view']">{{ imageStorage.id }}</a></td>
+                    <td>
+                        <a *ngIf="imageStorage.image" (click)="openFile(imageStorage.imageContentType, imageStorage.image)">
+                            <img [src]="'data:' + imageStorage.imageContentType + ';base64,' + imageStorage.image" style="max-height: 30px;" alt="imageStorage image"/>
+                        </a>
+                        <span *ngIf="imageStorage.image">{{ imageStorage.imageContentType }}, {{ byteSize(imageStorage.image) }}</span>
+                    </td>
+                    <td>{{ imageStorage.sportsHallId }}</td>
+                    <td>{{ imageStorage.isPrimary }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/image-storage', imageStorage.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/image-storage', imageStorage.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(imageStorage)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="imageStorages && imageStorages.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

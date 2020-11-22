@@ -1,0 +1,23 @@
+{
+  "sportComplexFinderApp": {
+    "city": {
+      "home": {
+        "title": "Cities",
+        "createLabel": "Янги City қўшиш",
+        "createOrEditLabel": "Cityни таҳрирлаш",
+        "notFound": "No Cities found"
+      },
+      "created": "City {{ param }} билан қўшилди.",
+      "updated": "{{ param }}- City сақланди.",
+      "deleted": "{{ param }}- City ўчирилди.",
+      "delete": {
+        "question": "{{ id }}- Cityни ўчирмоқчимисиз? "
+      },
+      "detail": {
+        "title": "City"
+      },
+      "name": "Name",
+      "region": "Region"
+    }
+  }
+}

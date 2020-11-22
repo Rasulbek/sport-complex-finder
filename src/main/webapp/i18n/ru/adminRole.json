@@ -1,0 +1,9 @@
+{
+  "sportComplexFinderApp": {
+    "AdminRole": {
+      "null": "",
+      "ADMIN": "ADMIN",
+      "MODERATOR": "MODERATOR"
+    }
+  }
+}

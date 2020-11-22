@@ -633,10 +633,10 @@
                         <changeLogFile>${project.basedir}/src/main/resources/config/liquibase/master.xml</changeLogFile>
                         <diffChangeLogFile>${project.basedir}/src/main/resources/config/liquibase/changelog/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
                         <driver>org.postgresql.Driver</driver>
-                        <url>jdbc:postgresql://localhost:5432/SportComplexFinder</url>
+                        <url>jdbc:postgresql://localhost:5432/sport</url>
                         <defaultSchemaName></defaultSchemaName>
-                        <username>SportComplexFinder</username>
-                        <password></password>
+                        <username>sport</username>
+                        <password>sport</password>
                         <referenceUrl>hibernate:spring:uz.tafakkur.sport.domain?dialect=io.github.jhipster.domain.util.FixedPostgreSQL10Dialect&amp;hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy</referenceUrl>
                         <verbose>true</verbose>
                         <logging>debug</logging>

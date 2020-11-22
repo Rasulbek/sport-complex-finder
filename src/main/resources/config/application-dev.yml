@@ -37,9 +37,9 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/SportComplexFinder
-    username: SportComplexFinder
-    password:
+    url: jdbc:postgresql://localhost:5432/sport
+    username: sport
+    password: sport
     hikari:
       poolName: Hikari
       auto-commit: false

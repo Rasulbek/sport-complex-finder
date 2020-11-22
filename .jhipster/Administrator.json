@@ -1,0 +1,27 @@
+{
+  "name": "Administrator",
+  "fields": [
+    {
+      "fieldName": "chatId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "role",
+      "fieldType": "AdminRole",
+      "fieldValues": "ADMIN,MODERATOR"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20201122054327",
+  "entityTableName": "administrator",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

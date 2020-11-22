@@ -1,0 +1,11 @@
+{
+  "sportComplexFinderApp": {
+    "FacilityStatus": {
+      "null": "",
+      "ENABLED": "ENABLED",
+      "DISABLED": "DISABLED",
+      "HIDDEN": "HIDDEN",
+      "VIP": "VIP"
+    }
+  }
+}

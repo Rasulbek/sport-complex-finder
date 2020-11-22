@@ -1,0 +1,10 @@
+{
+  "sportComplexFinderApp": {
+    "ProfileStatus": {
+      "null": "",
+      "ACTIVE": "ACTIVE",
+      "BANNED": "BANNED",
+      "BLOCKED": "BLOCKED"
+    }
+  }
+}

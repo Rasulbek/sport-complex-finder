@@ -1,0 +1,23 @@
+{
+  "sportComplexFinderApp": {
+    "administrator": {
+      "home": {
+        "title": "Administrators",
+        "createLabel": "Yangi Administrator qo`shish",
+        "createOrEditLabel": "Administratorni tahrirlash",
+        "notFound": "No Administrators found"
+      },
+      "created": "Administrator {{ param }} bilan qo`shildi",
+      "updated": "{{ param }}- Administrator saqlandi",
+      "deleted": "{{ param }}- Administrator o`chirildi",
+      "delete": {
+        "question": "{{ id }}- Administratorni o`chirmoqchimisiz? "
+      },
+      "detail": {
+        "title": "Administrator"
+      },
+      "chatId": "Chat Id",
+      "role": "Role"
+    }
+  }
+}

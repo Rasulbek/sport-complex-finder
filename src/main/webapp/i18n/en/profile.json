@@ -1,0 +1,27 @@
+{
+  "sportComplexFinderApp": {
+    "profile": {
+      "home": {
+        "title": "Profiles",
+        "createLabel": "Create a new Profile",
+        "createOrEditLabel": "Create or edit a Profile",
+        "notFound": "No Profiles found"
+      },
+      "created": "A new Profile is created with identifier {{ param }}",
+      "updated": "A Profile is updated with identifier {{ param }}",
+      "deleted": "A Profile is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Profile {{ id }}?"
+      },
+      "detail": {
+        "title": "Profile"
+      },
+      "phone": "Phone",
+      "userName": "User Name",
+      "fullName": "Full Name",
+      "chosenLang": "Chosen Lang",
+      "status": "Status",
+      "city": "City"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "sportComplexFinderApp": {
+    "imageStorage": {
+      "home": {
+        "title": "Image Storages",
+        "createLabel": "Create a new Image Storage",
+        "createOrEditLabel": "Create or edit a Image Storage",
+        "notFound": "No Image Storages found"
+      },
+      "created": "A new Image Storage is created with identifier {{ param }}",
+      "updated": "A Image Storage is updated with identifier {{ param }}",
+      "deleted": "A Image Storage is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Image Storage {{ id }}?"
+      },
+      "detail": {
+        "title": "Image Storage"
+      },
+      "image": "Image",
+      "sportsHallId": "Sports Hall Id",
+      "isPrimary": "Is Primary"
+    }
+  }
+}

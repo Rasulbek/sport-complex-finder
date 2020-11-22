@@ -1,0 +1,23 @@
+{
+  "sportComplexFinderApp": {
+    "category": {
+      "home": {
+        "title": "Categories",
+        "createLabel": "Янги Category қўшиш",
+        "createOrEditLabel": "Categoryни таҳрирлаш",
+        "notFound": "No Categories found"
+      },
+      "created": "Category {{ param }} билан қўшилди.",
+      "updated": "{{ param }}- Category сақланди.",
+      "deleted": "{{ param }}- Category ўчирилди.",
+      "delete": {
+        "question": "{{ id }}- Categoryни ўчирмоқчимисиз? "
+      },
+      "detail": {
+        "title": "Category"
+      },
+      "name": "Name",
+      "status": "Status"
+    }
+  }
+}

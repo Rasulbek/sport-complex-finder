@@ -1,0 +1,22 @@
+{
+  "sportComplexFinderApp": {
+    "region": {
+      "home": {
+        "title": "Regions",
+        "createLabel": "Yangi Region qo`shish",
+        "createOrEditLabel": "Regionni tahrirlash",
+        "notFound": "No Regions found"
+      },
+      "created": "Region {{ param }} bilan qo`shildi",
+      "updated": "{{ param }}- Region saqlandi",
+      "deleted": "{{ param }}- Region o`chirildi",
+      "delete": {
+        "question": "{{ id }}- Regionni o`chirmoqchimisiz? "
+      },
+      "detail": {
+        "title": "Region"
+      },
+      "name": "Name"
+    }
+  }
+}

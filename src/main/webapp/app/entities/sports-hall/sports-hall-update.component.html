@@ -1,0 +1,164 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-sports-hall-heading" jhiTranslate="sportComplexFinderApp.sportsHall.home.createOrEditLabel">Create or edit a Sports Hall</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sportComplexFinderApp.sportsHall.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                    <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sportComplexFinderApp.sportsHall.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                    <div *ngIf="editForm.get('description')!.invalid && (editForm.get('description')!.dirty || editForm.get('description')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('description')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 400 }">
+                        This field cannot be longer than 400 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sportComplexFinderApp.sportsHall.contactPerson" for="field_contactPerson">Contact Person</label>
+                    <input type="text" class="form-control" name="contactPerson" id="field_contactPerson"
+                           formControlName="contactPerson"/>
+                    <div *ngIf="editForm.get('contactPerson')!.invalid && (editForm.get('contactPerson')!.dirty || editForm.get('contactPerson')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('contactPerson')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sportComplexFinderApp.sportsHall.phone" for="field_phone">Phone</label>
+                    <input type="text" class="form-control" name="phone" id="field_phone"
+                           formControlName="phone"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sportComplexFinderApp.sportsHall.telegramNick" for="field_telegramNick">Telegram Nick</label>
+                    <input type="text" class="form-control" name="telegramNick" id="field_telegramNick"
+                           formControlName="telegramNick"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sportComplexFinderApp.sportsHall.price" for="field_price">Price</label>
+                    <input type="number" class="form-control" name="price" id="field_price"
+                           formControlName="price"/>
+                    <div *ngIf="editForm.get('price')!.invalid && (editForm.get('price')!.dirty || editForm.get('price')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('price')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('price')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sportComplexFinderApp.sportsHall.status" for="field_status">Status</label>
+                    <select class="form-control" name="status" formControlName="status" id="field_status">
+                        <option value="ENABLED">{{ 'sportComplexFinderApp.FacilityStatus.ENABLED' | translate }}</option>
+                        <option value="DISABLED">{{ 'sportComplexFinderApp.FacilityStatus.DISABLED' | translate }}</option>
+                        <option value="HIDDEN">{{ 'sportComplexFinderApp.FacilityStatus.HIDDEN' | translate }}</option>
+                        <option value="VIP">{{ 'sportComplexFinderApp.FacilityStatus.VIP' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('status')!.invalid && (editForm.get('status')!.dirty || editForm.get('status')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('status')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sportComplexFinderApp.sportsHall.latitude" for="field_latitude">Latitude</label>
+                    <input type="number" class="form-control" name="latitude" id="field_latitude"
+                           formControlName="latitude"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sportComplexFinderApp.sportsHall.longitude" for="field_longitude">Longitude</label>
+                    <input type="number" class="form-control" name="longitude" id="field_longitude"
+                           formControlName="longitude"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sportComplexFinderApp.sportsHall.address" for="field_address">Address</label>
+                    <input type="text" class="form-control" name="address" id="field_address"
+                           formControlName="address"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sportComplexFinderApp.sportsHall.landmark" for="field_landmark">Landmark</label>
+                    <input type="text" class="form-control" name="landmark" id="field_landmark"
+                           formControlName="landmark"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sportComplexFinderApp.sportsHall.ownerTelegramId" for="field_ownerTelegramId">Owner Telegram Id</label>
+                    <input type="text" class="form-control" name="ownerTelegramId" id="field_ownerTelegramId"
+                           formControlName="ownerTelegramId"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sportComplexFinderApp.sportsHall.category" for="field_category">Category</label>
+                    <select class="form-control" id="field_category" name="category" formControlName="categoryId">
+                        <option *ngIf="!editForm.get('categoryId')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="categoryOption.id" *ngFor="let categoryOption of categories; trackBy: trackById">{{ categoryOption.name }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('categoryId')!.invalid && (editForm.get('categoryId')!.dirty || editForm.get('categoryId')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('categoryId')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sportComplexFinderApp.sportsHall.city" for="field_city">City</label>
+                    <select class="form-control" id="field_city" name="city" formControlName="cityId">
+                        <option *ngIf="!editForm.get('cityId')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="cityOption.id" *ngFor="let cityOption of cities; trackBy: trackById">{{ cityOption.name }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('cityId')!.invalid && (editForm.get('cityId')!.dirty || editForm.get('cityId')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('cityId')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

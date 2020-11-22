@@ -1,0 +1,86 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="sportsHall">
+            <h2><span jhiTranslate="sportComplexFinderApp.sportsHall.detail.title">Sports Hall</span> {{ sportsHall.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="sportComplexFinderApp.sportsHall.name">Name</span></dt>
+                <dd>
+                    <span>{{ sportsHall.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="sportComplexFinderApp.sportsHall.description">Description</span></dt>
+                <dd>
+                    <span>{{ sportsHall.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="sportComplexFinderApp.sportsHall.contactPerson">Contact Person</span></dt>
+                <dd>
+                    <span>{{ sportsHall.contactPerson }}</span>
+                </dd>
+                <dt><span jhiTranslate="sportComplexFinderApp.sportsHall.phone">Phone</span></dt>
+                <dd>
+                    <span>{{ sportsHall.phone }}</span>
+                </dd>
+                <dt><span jhiTranslate="sportComplexFinderApp.sportsHall.telegramNick">Telegram Nick</span></dt>
+                <dd>
+                    <span>{{ sportsHall.telegramNick }}</span>
+                </dd>
+                <dt><span jhiTranslate="sportComplexFinderApp.sportsHall.price">Price</span></dt>
+                <dd>
+                    <span>{{ sportsHall.price }}</span>
+                </dd>
+                <dt><span jhiTranslate="sportComplexFinderApp.sportsHall.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'sportComplexFinderApp.FacilityStatus.' + sportsHall.status }}">{{ sportsHall.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="sportComplexFinderApp.sportsHall.latitude">Latitude</span></dt>
+                <dd>
+                    <span>{{ sportsHall.latitude }}</span>
+                </dd>
+                <dt><span jhiTranslate="sportComplexFinderApp.sportsHall.longitude">Longitude</span></dt>
+                <dd>
+                    <span>{{ sportsHall.longitude }}</span>
+                </dd>
+                <dt><span jhiTranslate="sportComplexFinderApp.sportsHall.address">Address</span></dt>
+                <dd>
+                    <span>{{ sportsHall.address }}</span>
+                </dd>
+                <dt><span jhiTranslate="sportComplexFinderApp.sportsHall.landmark">Landmark</span></dt>
+                <dd>
+                    <span>{{ sportsHall.landmark }}</span>
+                </dd>
+                <dt><span jhiTranslate="sportComplexFinderApp.sportsHall.ownerTelegramId">Owner Telegram Id</span></dt>
+                <dd>
+                    <span>{{ sportsHall.ownerTelegramId }}</span>
+                </dd>
+                <dt><span jhiTranslate="sportComplexFinderApp.sportsHall.category">Category</span></dt>
+                <dd>
+                    <div *ngIf="sportsHall.categoryId">
+                        <a [routerLink]="['/category', sportsHall.categoryId, 'view']">{{ sportsHall.categoryName }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="sportComplexFinderApp.sportsHall.city">City</span></dt>
+                <dd>
+                    <div *ngIf="sportsHall.cityId">
+                        <a [routerLink]="['/city', sportsHall.cityId, 'view']">{{ sportsHall.cityName }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/sports-hall', sportsHall.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+{
+  "sportComplexFinderApp": {
+    "sportsHall": {
+      "home": {
+        "title": "Sports Halls",
+        "createLabel": "Create a new Sports Hall",
+        "createOrEditLabel": "Create or edit a Sports Hall",
+        "notFound": "No Sports Halls found"
+      },
+      "created": "A new Sports Hall is created with identifier {{ param }}",
+      "updated": "A Sports Hall is updated with identifier {{ param }}",
+      "deleted": "A Sports Hall is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Sports Hall {{ id }}?"
+      },
+      "detail": {
+        "title": "Sports Hall"
+      },
+      "name": "Name",
+      "description": "Description",
+      "contactPerson": "Contact Person",
+      "phone": "Phone",
+      "telegramNick": "Telegram Nick",
+      "price": "Price",
+      "status": "Status",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "address": "Address",
+      "landmark": "Landmark",
+      "ownerTelegramId": "Owner Telegram Id",
+      "category": "Category",
+      "city": "City"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "sportComplexFinderApp": {
+    "administrator": {
+      "home": {
+        "title": "Administrators",
+        "createLabel": "Создать новый Administrator",
+        "createOrEditLabel": "Создать или отредактировать Administrator",
+        "notFound": "No Administrators found"
+      },
+      "created": "Новый Administrator создан с идентификатором {{ param }}",
+      "updated": "Administrator обновлен с идентификатором {{ param }}",
+      "deleted": "Administrator удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Administrator {{ id }}?"
+      },
+      "detail": {
+        "title": "Administrator"
+      },
+      "chatId": "Chat Id",
+      "role": "Role"
+    }
+  }
+}

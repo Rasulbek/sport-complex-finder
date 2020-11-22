@@ -1,0 +1,35 @@
+{
+  "sportComplexFinderApp": {
+    "sportsHall": {
+      "home": {
+        "title": "Sports Halls",
+        "createLabel": "Yangi Sports Hall qo`shish",
+        "createOrEditLabel": "Sports Hallni tahrirlash",
+        "notFound": "No Sports Halls found"
+      },
+      "created": "Sports Hall {{ param }} bilan qo`shildi",
+      "updated": "{{ param }}- Sports Hall saqlandi",
+      "deleted": "{{ param }}- Sports Hall o`chirildi",
+      "delete": {
+        "question": "{{ id }}- Sports Hallni o`chirmoqchimisiz? "
+      },
+      "detail": {
+        "title": "Sports Hall"
+      },
+      "name": "Name",
+      "description": "Description",
+      "contactPerson": "Contact Person",
+      "phone": "Phone",
+      "telegramNick": "Telegram Nick",
+      "price": "Price",
+      "status": "Status",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "address": "Address",
+      "landmark": "Landmark",
+      "ownerTelegramId": "Owner Telegram Id",
+      "category": "Category",
+      "city": "City"
+    }
+  }
+}

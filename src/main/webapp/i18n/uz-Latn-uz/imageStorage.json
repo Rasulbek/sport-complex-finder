@@ -1,0 +1,24 @@
+{
+  "sportComplexFinderApp": {
+    "imageStorage": {
+      "home": {
+        "title": "Image Storages",
+        "createLabel": "Yangi Image Storage qo`shish",
+        "createOrEditLabel": "Image Storageni tahrirlash",
+        "notFound": "No Image Storages found"
+      },
+      "created": "Image Storage {{ param }} bilan qo`shildi",
+      "updated": "{{ param }}- Image Storage saqlandi",
+      "deleted": "{{ param }}- Image Storage o`chirildi",
+      "delete": {
+        "question": "{{ id }}- Image Storageni o`chirmoqchimisiz? "
+      },
+      "detail": {
+        "title": "Image Storage"
+      },
+      "image": "Image",
+      "sportsHallId": "Sports Hall Id",
+      "isPrimary": "Is Primary"
+    }
+  }
+}

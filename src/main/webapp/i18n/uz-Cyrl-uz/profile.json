@@ -1,0 +1,27 @@
+{
+  "sportComplexFinderApp": {
+    "profile": {
+      "home": {
+        "title": "Profiles",
+        "createLabel": "Янги Profile қўшиш",
+        "createOrEditLabel": "Profileни таҳрирлаш",
+        "notFound": "No Profiles found"
+      },
+      "created": "Profile {{ param }} билан қўшилди.",
+      "updated": "{{ param }}- Profile сақланди.",
+      "deleted": "{{ param }}- Profile ўчирилди.",
+      "delete": {
+        "question": "{{ id }}- Profileни ўчирмоқчимисиз? "
+      },
+      "detail": {
+        "title": "Profile"
+      },
+      "phone": "Phone",
+      "userName": "User Name",
+      "fullName": "Full Name",
+      "chosenLang": "Chosen Lang",
+      "status": "Status",
+      "city": "City"
+    }
+  }
+}

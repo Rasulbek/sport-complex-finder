@@ -1,0 +1,11 @@
+id;image;image_content_type;sports_hall_id;is_primary
+1;../fake-data/blob/hipster.png;image/png;58513;false
+2;../fake-data/blob/hipster.png;image/png;57796;true
+3;../fake-data/blob/hipster.png;image/png;85998;false
+4;../fake-data/blob/hipster.png;image/png;83941;true
+5;../fake-data/blob/hipster.png;image/png;52638;true
+6;../fake-data/blob/hipster.png;image/png;69462;true
+7;../fake-data/blob/hipster.png;image/png;60401;false
+8;../fake-data/blob/hipster.png;image/png;58009;true
+9;../fake-data/blob/hipster.png;image/png;31524;false
+10;../fake-data/blob/hipster.png;image/png;34195;true

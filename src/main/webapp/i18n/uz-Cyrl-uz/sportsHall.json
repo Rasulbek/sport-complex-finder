@@ -1,0 +1,35 @@
+{
+  "sportComplexFinderApp": {
+    "sportsHall": {
+      "home": {
+        "title": "Sports Halls",
+        "createLabel": "Янги Sports Hall қўшиш",
+        "createOrEditLabel": "Sports Hallни таҳрирлаш",
+        "notFound": "No Sports Halls found"
+      },
+      "created": "Sports Hall {{ param }} билан қўшилди.",
+      "updated": "{{ param }}- Sports Hall сақланди.",
+      "deleted": "{{ param }}- Sports Hall ўчирилди.",
+      "delete": {
+        "question": "{{ id }}- Sports Hallни ўчирмоқчимисиз? "
+      },
+      "detail": {
+        "title": "Sports Hall"
+      },
+      "name": "Name",
+      "description": "Description",
+      "contactPerson": "Contact Person",
+      "phone": "Phone",
+      "telegramNick": "Telegram Nick",
+      "price": "Price",
+      "status": "Status",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "address": "Address",
+      "landmark": "Landmark",
+      "ownerTelegramId": "Owner Telegram Id",
+      "category": "Category",
+      "city": "City"
+    }
+  }
+}
