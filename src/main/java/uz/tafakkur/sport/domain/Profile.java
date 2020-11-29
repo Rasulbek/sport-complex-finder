@@ -23,6 +23,9 @@ public class Profile implements Serializable {
     @Column(name = "phone", length = 15)
     private String phone;
 
+    @Column(name = "chat_id")
+    private Long chatId;
+
     @Size(max = 100)
     @Column(name = "user_name", length = 100)
     private String userName;
@@ -39,8 +42,7 @@ public class Profile implements Serializable {
     @Column(name = "status", nullable = false)
     private ProfileStatus status;
 
-    @ManyToOne(optional = false)
-    @NotNull
+    @ManyToOne
     @JsonIgnoreProperties(value = "profiles", allowSetters = true)
     private City city;
 
@@ -64,6 +66,19 @@ public class Profile implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Long getChatId() {
+        return chatId;
+    }
+
+    public Profile chatId(Long chatId) {
+        this.chatId = chatId;
+        return this;
+    }
+
+    public void setChatId(Long chatId) {
+        this.chatId = chatId;
     }
 
     public String getUserName() {
@@ -155,6 +170,7 @@ public class Profile implements Serializable {
         return "Profile{" +
             "id=" + getId() +
             ", phone='" + getPhone() + "'" +
+            ", chatId=" + getChatId() +
             ", userName='" + getUserName() + "'" +
             ", fullName='" + getFullName() + "'" +
             ", chosenLang='" + getChosenLang() + "'" +

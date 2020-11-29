@@ -24,6 +24,12 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sportComplexFinderApp.profile.chatId" for="field_chatId">Chat Id</label>
+                    <input type="number" class="form-control" name="chatId" id="field_chatId"
+                           formControlName="chatId"/>
+                </div>
+
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="sportComplexFinderApp.profile.userName" for="field_userName">User Name</label>
                     <input type="text" class="form-control" name="userName" id="field_userName"
                            formControlName="userName"/>
@@ -71,15 +77,9 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="sportComplexFinderApp.profile.city" for="field_city">City</label>
                     <select class="form-control" id="field_city" name="city" formControlName="cityId">
-                        <option *ngIf="!editForm.get('cityId')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="null"></option>
                         <option [ngValue]="cityOption.id" *ngFor="let cityOption of cities; trackBy: trackById">{{ cityOption.name }}</option>
                     </select>
-                </div>
-                <div *ngIf="editForm.get('cityId')!.invalid && (editForm.get('cityId')!.dirty || editForm.get('cityId')!.touched)">
-                    <small class="form-text text-danger"
-                           *ngIf="editForm.get('cityId')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                    </small>
                 </div>
             </div>
 

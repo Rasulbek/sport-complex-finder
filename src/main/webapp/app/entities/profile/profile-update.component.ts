@@ -21,11 +21,12 @@ export class ProfileUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     phone: [null, [Validators.maxLength(15)]],
+    chatId: [],
     userName: [null, [Validators.maxLength(100)]],
     fullName: [],
     chosenLang: [null, [Validators.maxLength(2)]],
     status: [null, [Validators.required]],
-    cityId: [null, Validators.required],
+    cityId: [],
   });
 
   constructor(
@@ -47,6 +48,7 @@ export class ProfileUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: profile.id,
       phone: profile.phone,
+      chatId: profile.chatId,
       userName: profile.userName,
       fullName: profile.fullName,
       chosenLang: profile.chosenLang,
@@ -74,6 +76,7 @@ export class ProfileUpdateComponent implements OnInit {
       ...new Profile(),
       id: this.editForm.get(['id'])!.value,
       phone: this.editForm.get(['phone'])!.value,
+      chatId: this.editForm.get(['chatId'])!.value,
       userName: this.editForm.get(['userName'])!.value,
       fullName: this.editForm.get(['fullName'])!.value,
       chosenLang: this.editForm.get(['chosenLang'])!.value,

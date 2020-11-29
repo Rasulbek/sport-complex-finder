@@ -76,4 +76,8 @@ public class ProfileService {
 
         profileRepository.deleteById(id);
     }
+
+    public ProfileDTO getProfileByChatId(Long chatId) {
+        return profileRepository.findFirstByChatId(chatId).map(profileMapper::toDto).orElse(new ProfileDTO());
+    }
 }

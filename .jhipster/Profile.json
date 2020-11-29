@@ -8,6 +8,10 @@
       "fieldValidateRulesMaxlength": "15"
     },
     {
+      "fieldName": "chatId",
+      "fieldType": "Long"
+    },
+    {
       "fieldName": "userName",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
@@ -35,7 +39,6 @@
       "relationshipType": "many-to-one",
       "otherEntityName": "city",
       "otherEntityRelationshipName": "profile",
-      "relationshipValidateRules": "required",
       "relationshipName": "city",
       "otherEntityField": "name"
     }

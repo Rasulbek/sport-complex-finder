@@ -88,6 +88,9 @@ public class ProfileQueryService extends QueryService<Profile> {
             if (criteria.getPhone() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getPhone(), Profile_.phone));
             }
+            if (criteria.getChatId() != null) {
+                specification = specification.and(buildRangeSpecification(criteria.getChatId(), Profile_.chatId));
+            }
             if (criteria.getUserName() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getUserName(), Profile_.userName));
             }

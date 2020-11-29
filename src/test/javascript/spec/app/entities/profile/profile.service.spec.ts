@@ -21,7 +21,7 @@ describe('Service Tests', () => {
       service = injector.get(ProfileService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Profile(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', ProfileStatus.ACTIVE);
+      elemDefault = new Profile(0, 'AAAAAAA', 0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', ProfileStatus.ACTIVE);
     });
 
     describe('Service methods', () => {
@@ -56,6 +56,7 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             phone: 'BBBBBB',
+            chatId: 1,
             userName: 'BBBBBB',
             fullName: 'BBBBBB',
             chosenLang: 'BBBBBB',
@@ -77,6 +78,7 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             phone: 'BBBBBB',
+            chatId: 1,
             userName: 'BBBBBB',
             fullName: 'BBBBBB',
             chosenLang: 'BBBBBB',

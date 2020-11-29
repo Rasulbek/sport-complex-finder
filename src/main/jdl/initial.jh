@@ -1,5 +1,6 @@
 entity Profile(profile) {
 	phone String maxlength(15)
+	chatId Long
 	userName String maxlength(100)
     fullName String
     chosenLang String maxlength(2)
@@ -60,7 +61,7 @@ enum AdminRole {
 relationship ManyToOne {
 	SportsHall{category(name) required} to Category
     SportsHall{city(name) required} to City
-	Profile{city(name) required} to City
+	Profile{city(name)} to City
 	City{region(name) required} to Region
 }
 

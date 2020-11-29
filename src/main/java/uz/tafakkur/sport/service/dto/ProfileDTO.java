@@ -13,6 +13,8 @@ public class ProfileDTO implements Serializable {
     @Size(max = 15)
     private String phone;
 
+    private Long chatId;
+
     @Size(max = 100)
     private String userName;
 
@@ -42,6 +44,14 @@ public class ProfileDTO implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Long getChatId() {
+        return chatId;
+    }
+
+    public void setChatId(Long chatId) {
+        this.chatId = chatId;
     }
 
     public String getUserName() {
@@ -115,6 +125,7 @@ public class ProfileDTO implements Serializable {
         return "ProfileDTO{" +
             "id=" + getId() +
             ", phone='" + getPhone() + "'" +
+            ", chatId=" + getChatId() +
             ", userName='" + getUserName() + "'" +
             ", fullName='" + getFullName() + "'" +
             ", chosenLang='" + getChosenLang() + "'" +

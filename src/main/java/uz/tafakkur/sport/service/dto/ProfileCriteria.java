@@ -46,6 +46,8 @@ public class ProfileCriteria implements Serializable, Criteria {
 
     private StringFilter phone;
 
+    private LongFilter chatId;
+
     private StringFilter userName;
 
     private StringFilter fullName;
@@ -61,6 +63,7 @@ public class ProfileCriteria implements Serializable, Criteria {
     public ProfileCriteria(ProfileCriteria other) {
         this.id = other.id == null ? null : other.id.copy();
         this.phone = other.phone == null ? null : other.phone.copy();
+        this.chatId = other.chatId == null ? null : other.chatId.copy();
         this.userName = other.userName == null ? null : other.userName.copy();
         this.fullName = other.fullName == null ? null : other.fullName.copy();
         this.chosenLang = other.chosenLang == null ? null : other.chosenLang.copy();
@@ -87,6 +90,14 @@ public class ProfileCriteria implements Serializable, Criteria {
 
     public void setPhone(StringFilter phone) {
         this.phone = phone;
+    }
+
+    public LongFilter getChatId() {
+        return chatId;
+    }
+
+    public void setChatId(LongFilter chatId) {
+        this.chatId = chatId;
     }
 
     public StringFilter getUserName() {
@@ -141,6 +152,7 @@ public class ProfileCriteria implements Serializable, Criteria {
         return (
             Objects.equals(id, that.id) &&
             Objects.equals(phone, that.phone) &&
+            Objects.equals(chatId, that.chatId) &&
             Objects.equals(userName, that.userName) &&
             Objects.equals(fullName, that.fullName) &&
             Objects.equals(chosenLang, that.chosenLang) &&
@@ -151,7 +163,7 @@ public class ProfileCriteria implements Serializable, Criteria {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, phone, userName, fullName, chosenLang, status, cityId);
+        return Objects.hash(id, phone, chatId, userName, fullName, chosenLang, status, cityId);
     }
 
     // prettier-ignore
@@ -160,6 +172,7 @@ public class ProfileCriteria implements Serializable, Criteria {
         return "ProfileCriteria{" +
                 (id != null ? "id=" + id + ", " : "") +
                 (phone != null ? "phone=" + phone + ", " : "") +
+                (chatId != null ? "chatId=" + chatId + ", " : "") +
                 (userName != null ? "userName=" + userName + ", " : "") +
                 (fullName != null ? "fullName=" + fullName + ", " : "") +
                 (chosenLang != null ? "chosenLang=" + chosenLang + ", " : "") +

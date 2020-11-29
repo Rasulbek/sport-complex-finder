@@ -37,6 +37,10 @@ public class ProfileResourceIT {
     private static final String DEFAULT_PHONE = "AAAAAAAAAA";
     private static final String UPDATED_PHONE = "BBBBBBBBBB";
 
+    private static final Long DEFAULT_CHAT_ID = 1L;
+    private static final Long UPDATED_CHAT_ID = 2L;
+    private static final Long SMALLER_CHAT_ID = 1L - 1L;
+
     private static final String DEFAULT_USER_NAME = "AAAAAAAAAA";
     private static final String UPDATED_USER_NAME = "BBBBBBBBBB";
 
@@ -78,20 +82,11 @@ public class ProfileResourceIT {
     public static Profile createEntity(EntityManager em) {
         Profile profile = new Profile()
             .phone(DEFAULT_PHONE)
+            .chatId(DEFAULT_CHAT_ID)
             .userName(DEFAULT_USER_NAME)
             .fullName(DEFAULT_FULL_NAME)
             .chosenLang(DEFAULT_CHOSEN_LANG)
             .status(DEFAULT_STATUS);
-        // Add required entity
-        City city;
-        if (TestUtil.findAll(em, City.class).isEmpty()) {
-            city = CityResourceIT.createEntity(em);
-            em.persist(city);
-            em.flush();
-        } else {
-            city = TestUtil.findAll(em, City.class).get(0);
-        }
-        profile.setCity(city);
         return profile;
     }
 
@@ -104,20 +99,11 @@ public class ProfileResourceIT {
     public static Profile createUpdatedEntity(EntityManager em) {
         Profile profile = new Profile()
             .phone(UPDATED_PHONE)
+            .chatId(UPDATED_CHAT_ID)
             .userName(UPDATED_USER_NAME)
             .fullName(UPDATED_FULL_NAME)
             .chosenLang(UPDATED_CHOSEN_LANG)
             .status(UPDATED_STATUS);
-        // Add required entity
-        City city;
-        if (TestUtil.findAll(em, City.class).isEmpty()) {
-            city = CityResourceIT.createUpdatedEntity(em);
-            em.persist(city);
-            em.flush();
-        } else {
-            city = TestUtil.findAll(em, City.class).get(0);
-        }
-        profile.setCity(city);
         return profile;
     }
 
@@ -141,6 +127,7 @@ public class ProfileResourceIT {
         assertThat(profileList).hasSize(databaseSizeBeforeCreate + 1);
         Profile testProfile = profileList.get(profileList.size() - 1);
         assertThat(testProfile.getPhone()).isEqualTo(DEFAULT_PHONE);
+        assertThat(testProfile.getChatId()).isEqualTo(DEFAULT_CHAT_ID);
         assertThat(testProfile.getUserName()).isEqualTo(DEFAULT_USER_NAME);
         assertThat(testProfile.getFullName()).isEqualTo(DEFAULT_FULL_NAME);
         assertThat(testProfile.getChosenLang()).isEqualTo(DEFAULT_CHOSEN_LANG);
@@ -197,6 +184,7 @@ public class ProfileResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(profile.getId().intValue())))
             .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE)))
+            .andExpect(jsonPath("$.[*].chatId").value(hasItem(DEFAULT_CHAT_ID.intValue())))
             .andExpect(jsonPath("$.[*].userName").value(hasItem(DEFAULT_USER_NAME)))
             .andExpect(jsonPath("$.[*].fullName").value(hasItem(DEFAULT_FULL_NAME)))
             .andExpect(jsonPath("$.[*].chosenLang").value(hasItem(DEFAULT_CHOSEN_LANG)))
@@ -216,6 +204,7 @@ public class ProfileResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(profile.getId().intValue()))
             .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE))
+            .andExpect(jsonPath("$.chatId").value(DEFAULT_CHAT_ID.intValue()))
             .andExpect(jsonPath("$.userName").value(DEFAULT_USER_NAME))
             .andExpect(jsonPath("$.fullName").value(DEFAULT_FULL_NAME))
             .andExpect(jsonPath("$.chosenLang").value(DEFAULT_CHOSEN_LANG))
@@ -316,6 +305,110 @@ public class ProfileResourceIT {
 
         // Get all the profileList where phone does not contain UPDATED_PHONE
         defaultProfileShouldBeFound("phone.doesNotContain=" + UPDATED_PHONE);
+    }
+
+    @Test
+    @Transactional
+    public void getAllProfilesByChatIdIsEqualToSomething() throws Exception {
+        // Initialize the database
+        profileRepository.saveAndFlush(profile);
+
+        // Get all the profileList where chatId equals to DEFAULT_CHAT_ID
+        defaultProfileShouldBeFound("chatId.equals=" + DEFAULT_CHAT_ID);
+
+        // Get all the profileList where chatId equals to UPDATED_CHAT_ID
+        defaultProfileShouldNotBeFound("chatId.equals=" + UPDATED_CHAT_ID);
+    }
+
+    @Test
+    @Transactional
+    public void getAllProfilesByChatIdIsNotEqualToSomething() throws Exception {
+        // Initialize the database
+        profileRepository.saveAndFlush(profile);
+
+        // Get all the profileList where chatId not equals to DEFAULT_CHAT_ID
+        defaultProfileShouldNotBeFound("chatId.notEquals=" + DEFAULT_CHAT_ID);
+
+        // Get all the profileList where chatId not equals to UPDATED_CHAT_ID
+        defaultProfileShouldBeFound("chatId.notEquals=" + UPDATED_CHAT_ID);
+    }
+
+    @Test
+    @Transactional
+    public void getAllProfilesByChatIdIsInShouldWork() throws Exception {
+        // Initialize the database
+        profileRepository.saveAndFlush(profile);
+
+        // Get all the profileList where chatId in DEFAULT_CHAT_ID or UPDATED_CHAT_ID
+        defaultProfileShouldBeFound("chatId.in=" + DEFAULT_CHAT_ID + "," + UPDATED_CHAT_ID);
+
+        // Get all the profileList where chatId equals to UPDATED_CHAT_ID
+        defaultProfileShouldNotBeFound("chatId.in=" + UPDATED_CHAT_ID);
+    }
+
+    @Test
+    @Transactional
+    public void getAllProfilesByChatIdIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        profileRepository.saveAndFlush(profile);
+
+        // Get all the profileList where chatId is not null
+        defaultProfileShouldBeFound("chatId.specified=true");
+
+        // Get all the profileList where chatId is null
+        defaultProfileShouldNotBeFound("chatId.specified=false");
+    }
+
+    @Test
+    @Transactional
+    public void getAllProfilesByChatIdIsGreaterThanOrEqualToSomething() throws Exception {
+        // Initialize the database
+        profileRepository.saveAndFlush(profile);
+
+        // Get all the profileList where chatId is greater than or equal to DEFAULT_CHAT_ID
+        defaultProfileShouldBeFound("chatId.greaterThanOrEqual=" + DEFAULT_CHAT_ID);
+
+        // Get all the profileList where chatId is greater than or equal to UPDATED_CHAT_ID
+        defaultProfileShouldNotBeFound("chatId.greaterThanOrEqual=" + UPDATED_CHAT_ID);
+    }
+
+    @Test
+    @Transactional
+    public void getAllProfilesByChatIdIsLessThanOrEqualToSomething() throws Exception {
+        // Initialize the database
+        profileRepository.saveAndFlush(profile);
+
+        // Get all the profileList where chatId is less than or equal to DEFAULT_CHAT_ID
+        defaultProfileShouldBeFound("chatId.lessThanOrEqual=" + DEFAULT_CHAT_ID);
+
+        // Get all the profileList where chatId is less than or equal to SMALLER_CHAT_ID
+        defaultProfileShouldNotBeFound("chatId.lessThanOrEqual=" + SMALLER_CHAT_ID);
+    }
+
+    @Test
+    @Transactional
+    public void getAllProfilesByChatIdIsLessThanSomething() throws Exception {
+        // Initialize the database
+        profileRepository.saveAndFlush(profile);
+
+        // Get all the profileList where chatId is less than DEFAULT_CHAT_ID
+        defaultProfileShouldNotBeFound("chatId.lessThan=" + DEFAULT_CHAT_ID);
+
+        // Get all the profileList where chatId is less than UPDATED_CHAT_ID
+        defaultProfileShouldBeFound("chatId.lessThan=" + UPDATED_CHAT_ID);
+    }
+
+    @Test
+    @Transactional
+    public void getAllProfilesByChatIdIsGreaterThanSomething() throws Exception {
+        // Initialize the database
+        profileRepository.saveAndFlush(profile);
+
+        // Get all the profileList where chatId is greater than DEFAULT_CHAT_ID
+        defaultProfileShouldNotBeFound("chatId.greaterThan=" + DEFAULT_CHAT_ID);
+
+        // Get all the profileList where chatId is greater than SMALLER_CHAT_ID
+        defaultProfileShouldBeFound("chatId.greaterThan=" + SMALLER_CHAT_ID);
     }
 
     @Test
@@ -607,8 +700,12 @@ public class ProfileResourceIT {
     @Test
     @Transactional
     public void getAllProfilesByCityIsEqualToSomething() throws Exception {
-        // Get already existing entity
-        City city = profile.getCity();
+        // Initialize the database
+        profileRepository.saveAndFlush(profile);
+        City city = CityResourceIT.createEntity(em);
+        em.persist(city);
+        em.flush();
+        profile.setCity(city);
         profileRepository.saveAndFlush(profile);
         Long cityId = city.getId();
 
@@ -629,6 +726,7 @@ public class ProfileResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(profile.getId().intValue())))
             .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE)))
+            .andExpect(jsonPath("$.[*].chatId").value(hasItem(DEFAULT_CHAT_ID.intValue())))
             .andExpect(jsonPath("$.[*].userName").value(hasItem(DEFAULT_USER_NAME)))
             .andExpect(jsonPath("$.[*].fullName").value(hasItem(DEFAULT_FULL_NAME)))
             .andExpect(jsonPath("$.[*].chosenLang").value(hasItem(DEFAULT_CHOSEN_LANG)))
@@ -682,6 +780,7 @@ public class ProfileResourceIT {
         em.detach(updatedProfile);
         updatedProfile
             .phone(UPDATED_PHONE)
+            .chatId(UPDATED_CHAT_ID)
             .userName(UPDATED_USER_NAME)
             .fullName(UPDATED_FULL_NAME)
             .chosenLang(UPDATED_CHOSEN_LANG)
@@ -697,6 +796,7 @@ public class ProfileResourceIT {
         assertThat(profileList).hasSize(databaseSizeBeforeUpdate);
         Profile testProfile = profileList.get(profileList.size() - 1);
         assertThat(testProfile.getPhone()).isEqualTo(UPDATED_PHONE);
+        assertThat(testProfile.getChatId()).isEqualTo(UPDATED_CHAT_ID);
         assertThat(testProfile.getUserName()).isEqualTo(UPDATED_USER_NAME);
         assertThat(testProfile.getFullName()).isEqualTo(UPDATED_FULL_NAME);
         assertThat(testProfile.getChosenLang()).isEqualTo(UPDATED_CHOSEN_LANG);

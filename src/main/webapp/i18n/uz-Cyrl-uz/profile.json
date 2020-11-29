@@ -17,6 +17,7 @@
         "title": "Profile"
       },
       "phone": "Phone",
+      "chatId": "Chat Id",
       "userName": "User Name",
       "fullName": "Full Name",
       "chosenLang": "Chosen Lang",
